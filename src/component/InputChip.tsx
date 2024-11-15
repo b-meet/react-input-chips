@@ -6,11 +6,15 @@ type TInputChips = {
     inputValue: string;
     setChips: (val: string[]) => void;
     setInputValue: React.Dispatch<React.SetStateAction<string>>;
+    keysToTriggerChipConversion?: string[];
     needWhiteSpace?: boolean;
     validate?: () => boolean;
     disabled?: boolean;
     placeholder?: string;
-    removeBtnSvg?: JSX.Element;
+    nextPlaceholder?: string;
+    removeBtnSvg?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
+    chipStyles?: React.CSSProperties;
+    containerStyles?: React.CSSProperties;
 };
 
 const InputChips = ({
@@ -18,14 +22,16 @@ const InputChips = ({
     setChips,
     inputValue,
     setInputValue,
+    keysToTriggerChipConversion = ['Enter', ','],
     needWhiteSpace = true,
     validate,
     disabled = false,
     placeholder,
+    nextPlaceholder,
     removeBtnSvg,
+    chipStyles,
+    containerStyles,
 }: TInputChips) => {
-    console.log(needWhiteSpace);
-
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (needWhiteSpace) {
             setInputValue(e.target.value);
@@ -36,19 +42,21 @@ const InputChips = ({
 
     const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (
-            (e.key === 'Enter' ||
-                e.key === ',' ||
-                e.key == ' ' ||
-                e.keyCode == 9) &&
+            keysToTriggerChipConversion.includes(e.key) &&
             (!validate || validate())
         ) {
-            const chip = inputValue.trim().replace(/,/g, '');
+            const regex = new RegExp(
+                `[${keysToTriggerChipConversion.join('')}]`,
+                'g'
+            );
+            const chip = inputValue.trim().replace(regex, '');
+
             if (chip) {
                 setChips([...chips, chip]);
                 setInputValue('');
             }
-        } else {
-            setChips([...chips]);
+
+            e.preventDefault();
         }
     };
 
@@ -64,12 +72,13 @@ const InputChips = ({
     };
 
     return (
-        <div className="chip-input-warpper">
+        <div className="chip-input-warpper" style={containerStyles ?? {}}>
             {chips?.map((chip, index) => (
                 <div
                     key={chip + index}
                     data-testid={`input-value-chip-${index}`}
                     className="chip"
+                    style={chipStyles ?? {}}
                 >
                     {chip}
                     <button
@@ -96,7 +105,9 @@ const InputChips = ({
             <input
                 className="chip-input"
                 type="text"
-                placeholder={disabled ? '' : placeholder}
+                placeholder={
+                    disabled ? '' : chips.length ? nextPlaceholder : placeholder
+                }
                 value={inputValue}
                 onChange={handleInputChange}
                 onKeyDown={handleInputKeyDown}

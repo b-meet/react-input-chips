@@ -11,6 +11,7 @@ const App = () => {
             inputValue={inputValue}
             setChips={setChips}
             setInputValue={setInputValue}
+            placeholder="hello"
         />
     );
 };
