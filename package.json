@@ -1,13 +1,19 @@
 {
     "name": "react-input-chip-beta",
     "private": false,
-    "version": "0.0.0",
+    "version": "0.0.9",
     "main": "./dist/index.js",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "type": "module",
+    "files": [
+        "dist",
+        "src",
+        "dist/**/*.css"
+    ],
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "tsup",
         "lint": "eslint .",
         "preview": "vite preview",
         "bundle": "tsup src/index.ts"

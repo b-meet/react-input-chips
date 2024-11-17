@@ -11,3 +11,4 @@ tsconfig.app.json
 tsconfig.json
 tsup.config.ts
 vite.config.ts
+.prettierrc

@@ -1,1 +1,1 @@
-export {default as InputChip} from './src/components/InputChip';
+export {default as InputChips} from './src/components/InputChip.js';
