@@ -10,8 +10,9 @@ const App = () => {
             chips={chips}
             inputValue={inputValue}
             setChips={setChips}
+            placeholder="Add user names"
             setInputValue={setInputValue}
-            placeholder="hello"
+            nextPlaceholder="You can add upto 10 user names"
         />
     );
 };

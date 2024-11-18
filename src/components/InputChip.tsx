@@ -26,15 +26,31 @@ const InputChips = ({
     };
 
     const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const printableKeys = keysToTriggerChipConversion.filter(
+            (key) => key.length === 1
+        );
+        const namedKeys = keysToTriggerChipConversion.filter(
+            (key) => key.length > 1
+        );
+
         if (
-            keysToTriggerChipConversion.includes(e.key) &&
-            (!validate || validate())
+            namedKeys.includes(e.key) ||
+            (printableKeys.includes(e.key) &&
+                inputValue.trim() !== '' &&
+                (!validate || validate()))
         ) {
-            const regex = new RegExp(
-                `[${keysToTriggerChipConversion.join('')}]`,
-                'g'
-            );
-            const chip = inputValue.trim().replace(regex, '');
+            let chip = inputValue.trim();
+            if (printableKeys.length > 0) {
+                const regex = new RegExp(
+                    `[${printableKeys
+                        .map((key) =>
+                            key.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+                        )
+                        .join('')}]`,
+                    'g'
+                );
+                chip = chip.replace(regex, '');
+            }
 
             if (chip) {
                 setChips([...chips, chip]);

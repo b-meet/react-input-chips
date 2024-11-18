@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# React-input-chips
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A package with minimum dependcies and maximum customisation.
 
-Currently, two official plugins are available:
+If you want a input field whose value converts to a customisable chip on click of keys of you choice then this is the best package for you.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You have full control over
 
-## Expanding the ESLint configuration
+-   validation of the field
+-   styling of the chips
+-   styling of the wrapper
+-   chip conversion trigger
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Demo
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Install react-input-chips with npm
+
+```bash
+  npm install react-input-chips
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Props and information
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+One important thing for the default styling of the `<InputChip/>` is that you need to explicity add CSS file file import in your root file following is the path for it
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+import "../node_modules/react-input-chip-beta/dist/index.css";
 ```
+
+following are all the props supported as of now.
+
+| Prop                        | Default Value                       | Description                                                                                                                                                                                                                                                 |
+| --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| chips\*                     | -                                   | This is a react state for storing the chips, it has to be an array                                                                                                                                                                                          |
+| setChips\*                  | -                                   | This is the setState for chips state                                                                                                                                                                                                                        |
+| inputValue\*                | -                                   | This will be a react state for handling the user input before it turns into a chip                                                                                                                                                                          |
+| setInputValue\*             | -                                   | This is the setState for inputValue                                                                                                                                                                                                                         |
+| keysToTriggerChipConversion | `[Enter', ',']`                     | The keys entered in this array will be used to trigger the chip conversion from input value. (the value in the array are case sensitive so if it does work try changing the case)                                                                           |
+| needWhiteSpace              | true                                | This is determine if you can keep the whitespace in your input value                                                                                                                                                                                        |
+| validate                    | return value `true`                 | This is the validation function which must return a boolean value either `true` or `false` based on the conditions you want the field value to be valid or convertible into a chip. If the value is valid then n then only a chip will be created out of it |
+| disabled                    | false                               | Enable that to diable the input field                                                                                                                                                                                                                       |
+| placeholder                 | -                                   | A placeholder for input field                                                                                                                                                                                                                               |
+| nextPlaceholder             | -                                   | Placeholder after first chip is created                                                                                                                                                                                                                     |
+| removeBtnSvg                | is a `SVG` which looks like close/X | You can add any HTML element as of now, but better just add a `SVG` element                                                                                                                                                                                 |
+| chipStyles                  | -                                   | You add any styles supported by CSS it will be added a iniline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
+| containerStyles             | -                                   | You can add the CSS styles for the whole input container itself                                                                                                                                                                                             |
+
+## Authors
+
+-   [@b-meet](https://github.com/b-meet)
