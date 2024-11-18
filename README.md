@@ -23,15 +23,47 @@ Install react-input-chips with npm
   npm install react-input-chips
 ```
 
-## Props and information
 
-**One important thing** for the default styling of the `<InputChip/>` is that you need to explicitly add CSS file import in your root file. The following is the path to it
+## Usage/Examples
+
+You just need to import the `<InputChip/>` component in the file you want the **react-input-chip** in and pass the required props that's it. All set!
+
+**One important thing** for the default styling of the `<InputChip/>` is that you need to explicitly add CSS file import in the parent or higher or same component. 
+The following is the path to it
 
 ```bash
 import "../node_modules/react-input-chip-beta/dist/index.css";
 ```
 
-I have for you here all the props supported as of now.
+
+```javascript
+import { useState } from "react";
+import { InputChips } from "react-input-chip-beta";
+
+const MyComponent = () => {
+	const [chips, setChips] = useState<string[]>([]);
+	const [inputValue, setInputValue] = useState("");
+
+	return (
+		<InputChips
+			chips={chips}
+			inputValue={inputValue}
+			setChips={setChips}
+			setInputValue={setInputValue}
+		/>
+	);
+};
+
+export default MyComponent;
+
+
+```
+
+
+
+## Props and information
+
+I have for you here all the props supported as of now. (* these are required props)
 
 | Prop                        | Default Value                       | Description                                                                                                                                                                                                                                                 |
 | --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,8 +80,6 @@ I have for you here all the props supported as of now.
 | removeBtnSvg                | is a `SVG` which looks like close/X | You can add any HTML element as of now, but better just add a `SVG` element                                                                                                                                                                                 |
 | chipStyles                  | -                                   | You add any styles supported by CSS it will be added a iniline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
 | containerStyles             | -                                   | You can add the CSS styles for the whole input container itself                                                                                                                                                                                             |
-
-* these are required props
 
 
 ## Why Beta
