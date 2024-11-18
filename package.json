@@ -1,11 +1,40 @@
 {
     "name": "react-input-chip-beta",
     "private": false,
-    "version": "0.0.9",
+    "version": "0.1.0",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "type": "module",
+    "keywords": [
+        "react-input",
+        "react-chips",
+        "chips-input",
+        "input-chips",
+        "react-chips-input",
+        "react-input-chips",
+        "react-chip-component",
+        "react-multi-input",
+        "tags-input",
+        "react-tags-input",
+        "multi-value-input",
+        "react-custom-input",
+        "chip-input",
+        "react-tags",
+        "react-token-input",
+        "input-chip-component"
+    ],
+    "homepage": "https://github.com/b-meet/react-input-chips",
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/b-meet/react-input-chips"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Meet",
+        "email": "meetbhalodiya1030@gmail.com",
+        "url": "https://github.com/b-meet"
+    },
     "files": [
         "dist",
         "src",
