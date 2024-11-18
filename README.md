@@ -1,8 +1,8 @@
 # React-input-chips
 
-A package with minimum dependcies and maximum customisation.
+A package with minimum dependencies and maximum customization.
 
-If you want a input field whose value converts to a customisable chip on click of keys of you choice then this is the best package for you.
+If you want an input field whose value converts to a customizable chip on a click of keys of your choice then this is the best package for you.
 
 You have full control over
 
@@ -12,6 +12,8 @@ You have full control over
 -   chip conversion trigger
 
 ## Demo
+![react-chips](https://github.com/user-attachments/assets/ba33d40e-63ea-46fa-8011-d418ea211a0a)
+
 
 ## Installation
 
@@ -23,13 +25,13 @@ Install react-input-chips with npm
 
 ## Props and information
 
-One important thing for the default styling of the `<InputChip/>` is that you need to explicity add CSS file file import in your root file following is the path for it
+**One important thing** for the default styling of the `<InputChip/>` is that you need to explicitly add CSS file import in your root file. The following is the path to it
 
 ```bash
 import "../node_modules/react-input-chip-beta/dist/index.css";
 ```
 
-following are all the props supported as of now.
+I have for you here all the props supported as of now.
 
 | Prop                        | Default Value                       | Description                                                                                                                                                                                                                                                 |
 | --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,6 +48,30 @@ following are all the props supported as of now.
 | removeBtnSvg                | is a `SVG` which looks like close/X | You can add any HTML element as of now, but better just add a `SVG` element                                                                                                                                                                                 |
 | chipStyles                  | -                                   | You add any styles supported by CSS it will be added a iniline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
 | containerStyles             | -                                   | You can add the CSS styles for the whole input container itself                                                                                                                                                                                             |
+
+* these are required props
+
+
+## Why Beta
+
+Hey guys, 
+
+It is the first npm package I ever released and it's gonna be so much fun I guess. No worries, The supported props and initial version might not have any issues still, incase you face any please open an issue or discussion, a PR for a fix would be much appreciated.
+
+It's beta cause I have not yet included many features and there is a huge opportunity for many devs to contribute here.
+When I release version 1.0.0. It will be officially considered a stable version I believe as there are a lot of new features I am willing to add along the way.
+
+I am excited to get some initial issues and feature requests and will work on them on priority until version 1.0.0 😅 also after that hehe.
+
+What do I want to be removed in the stable release?
+- The explicit addition of CSS file path
+- `needWhiteSpace` removal of this if possible
+
+There are many additions I want which I am working on any suggestion are welcome.
+
+
+## Support
+For support, email meetbhalodiya1030@gmial.com or open a discussion/issue
 
 ## Authors
 
