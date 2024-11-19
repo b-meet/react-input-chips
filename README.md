@@ -67,18 +67,18 @@ I have for you here all the props supported as of now. (* these are required pro
 
 | Prop                        | Default Value                       | Description                                                                                                                                                                                                                                                 |
 | --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| chips\*                     | -                                   | This is a react state for storing the chips, it has to be an array                                                                                                                                                                                          |
-| setChips\*                  | -                                   | This is the setState for chips state                                                                                                                                                                                                                        |
-| inputValue\*                | -                                   | This will be a react state for handling the user input before it turns into a chip                                                                                                                                                                          |
-| setInputValue\*             | -                                   | This is the setState for inputValue                                                                                                                                                                                                                         |
-| keysToTriggerChipConversion | `[Enter', ',']`                     | The keys entered in this array will be used to trigger the chip conversion from input value. (the value in the array are case sensitive so if it does work try changing the case)                                                                           |
-| needWhiteSpace              | true                                | This is determine if you can keep the whitespace in your input value                                                                                                                                                                                        |
+| chips\*                     | -                                   | This is a react `state` for storing the chips, it has to be an array                                                                                                                                                                                          |
+| setChips\*                  | -                                   | This is the `setState` for chips state                                                                                                                                                                                                                        |
+| inputValue\*                | -                                   | This will be a react `state` for handling the user input before it turns into a chip                                                                                                                                                                          |
+| setInputValue\*             | -                                   | This is the `setState` for input value                                                                                                                                                                                                                         |
+| keysToTriggerChipConversion | `[Enter', ',']`                     | The keys entered in this array will trigger the chip conversion from the input value. (the value in the array are case-sensitive so if it does work try changing the case)                                                                           |
+| needWhiteSpace              | true                                | This is to determine if you can keep the whitespace in your input value                                                                                                                                                                                        |
 | validate                    | return value `true`                 | This is the validation function which must return a boolean value either `true` or `false` based on the conditions you want the field value to be valid or convertible into a chip. If the value is valid then n then only a chip will be created out of it |
-| disabled                    | false                               | Enable that to diable the input field                                                                                                                                                                                                                       |
+| disabled                    | false                               | Enable that to disable the input field                                                                                                                                                                                                                       |
 | placeholder                 | -                                   | A placeholder for input field                                                                                                                                                                                                                               |
-| nextPlaceholder             | -                                   | Placeholder after first chip is created                                                                                                                                                                                                                     |
-| removeBtnSvg                | is a `SVG` which looks like close/X | You can add any HTML element as of now, but better just add a `SVG` element                                                                                                                                                                                 |
-| chipStyles                  | -                                   | You add any styles supported by CSS it will be added a iniline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
+| nextPlaceholder             | -                                   | Placeholder after the first chip is created                                                                                                                                                                                                                     |
+| removeBtnSvg                | is an `SVG` which looks like close/X | You can add any HTML element as of now, but it is better to add an `SVG` element                                                                                                                                                                                 |
+| chipStyles                  | -                                   | You add any styles supported by CSS it will be added as inline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
 | containerStyles             | -                                   | You can add the CSS styles for the whole input container itself                                                                                                                                                                                             |
 
 
@@ -86,19 +86,21 @@ I have for you here all the props supported as of now. (* these are required pro
 
 Hey guys, 
 
-It is the first npm package I ever released and it's gonna be so much fun I guess. No worries, The supported props and initial version might not have any issues still, incase you face any please open an issue or discussion, a PR for a fix would be much appreciated.
+It is the first npm package I ever released and it's gonna be so much fun I guess. No worries, The supported props in the current version might not have any issues still, in case you face any please open an issue or discussion, a PR for a fix would be much appreciated.
 
 It's beta cause I have not yet included many features and there is a huge opportunity for many devs to contribute here.
 When I release version 1.0.0. It will be officially considered a stable version I believe as there are a lot of new features I am willing to add along the way.
 
 I am excited to get some initial issues and feature requests and will work on them on priority until version 1.0.0 😅 also after that hehe.
 
-What do I want to be removed in the stable release?
+What do I want to do before the stable release?
 - The explicit addition of CSS file path
 - `needWhiteSpace` removal of this if possible
+- Add 100% test cases for the component
+- `removeBtnSvg` expects any HTML element, I want to enforce only SVG element
+- Add a few more features to it
 
-There are many additions I want which I am working on any suggestion are welcome.
-
+Any suggestions are welcome.
 
 ## Support
 For support, email meetbhalodiya1030@gmial.com or open a discussion/issue
