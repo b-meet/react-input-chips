@@ -16,6 +16,7 @@ const InputChips = ({
     removeBtnSvg,
     chipStyles,
     containerStyles,
+    backspaceToRemoveChip = false,
 }: TInputChips) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (needWhiteSpace) {
@@ -26,6 +27,18 @@ const InputChips = ({
     };
 
     const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (
+            backspaceToRemoveChip &&
+            e.key === 'Backspace' &&
+            inputValue.trim() === ''
+        ) {
+            setChips((prevState: string[]) => {
+                const updatedChips = [...prevState];
+                updatedChips.pop();
+                return updatedChips;
+            });
+        }
+
         const printableKeys = keysToTriggerChipConversion.filter(
             (key) => key.length === 1
         );

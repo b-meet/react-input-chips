@@ -13,6 +13,7 @@ const App = () => {
             placeholder="Add user names"
             setInputValue={setInputValue}
             nextPlaceholder="You can add upto 10 user names"
+            backspaceToRemoveChip
         />
     );
 };

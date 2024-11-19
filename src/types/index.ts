@@ -1,7 +1,7 @@
 export interface TInputChips {
     chips: string[];
     inputValue: string;
-    setChips: (val: string[]) => void;
+    setChips: React.Dispatch<React.SetStateAction<string[]>>;
     setInputValue: React.Dispatch<React.SetStateAction<string>>;
     keysToTriggerChipConversion?: string[];
     needWhiteSpace?: boolean;
@@ -12,4 +12,5 @@ export interface TInputChips {
     removeBtnSvg?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
     chipStyles?: React.CSSProperties;
     containerStyles?: React.CSSProperties;
+    backspaceToRemoveChip?: boolean;
 }
