@@ -26,9 +26,9 @@ Install react-input-chips with npm
 
 ## Usage/Examples
 
-You just need to import the `<InputChip/>` component in the file you want the **react-input-chip** in and pass the required props that's it. All set!
+You just need to import the `<InputChips/>` component in the file you want the **react-input-chip** in and pass the required props that's it. All set!
 
-**One important thing** for the default styling of the `<InputChip/>` is that you need to explicitly add CSS file import in the parent or higher or same component. 
+**One important thing** for the default styling of the `<InputChips/>` is that you need to explicitly add CSS file import in the parent or higher or same component. 
 The following is the path to it
 
 ```bash
