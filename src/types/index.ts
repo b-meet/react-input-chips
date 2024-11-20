@@ -7,7 +7,6 @@ export type AllowedKeys =
     | 'AltLeft'
     | 'MetaLeft'
     | 'MetaRight'
-    | 'Win'
     | 'Tab'
     | 'Enter'
     | 'Backspace'
