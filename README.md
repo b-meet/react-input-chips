@@ -61,21 +61,29 @@ export default MyComponent;
 
 I have for you here all the props supported as of now. (\* these are required props)
 
-| Prop                        | Default Value                       | Description                                                                                                                                                                                                                                                 |
-| --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| chips\*                     | -                                   | This is a react state for storing the chips, it has to be an array                                                                                                                                                                                          |
-| setChips\*                  | -                                   | This is the setState for chips state                                                                                                                                                                                                                        |
-| inputValue\*                | -                                   | This will be a react state for handling the user input before it turns into a chip                                                                                                                                                                          |
-| setInputValue\*             | -                                   | This is the setState for inputValue                                                                                                                                                                                                                         |
-| keysToTriggerChipConversion | `[Enter', ',']`                     | The keys entered in this array will be used to trigger the chip conversion from input value. (the value in the array are case sensitive so if it does work try changing the case)                                                                           |
-| backspaceToRemoveChip       | false                               | This will remove the chip when user hits backspace even after the inputvalue is cleared                                                                                                                                                                     |
-| validate                    | return value `true`                 | This is the validation function which must return a boolean value either `true` or `false` based on the conditions you want the field value to be valid or convertible into a chip. If the value is valid then n then only a chip will be created out of it |
-| disabled                    | false                               | Enable that to diable the input field                                                                                                                                                                                                                       |
-| placeholder                 | -                                   | A placeholder for input field                                                                                                                                                                                                                               |
-| nextPlaceholder             | -                                   | Placeholder after first chip is created                                                                                                                                                                                                                     |
-| removeBtnSvg                | is a `SVG` which looks like close/X | You can add any HTML element as of now, but better just add a `SVG` element                                                                                                                                                                                 |
-| chipStyles                  | -                                   | You add any styles supported by CSS it will be added a iniline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
-| containerStyles             | -                                   | You can add the CSS styles for the whole input container itself                                                                                                                                                                                             |     |
+
+| Prop                        | Default Value                        | Description                                                                                                                                                                                                                                                 |
+| --------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| chips\*                     | -                                    | This is a react `state` for storing the chips, it has to be an array                                                                                                                                                                                        |
+| setChips\*                  | -                                    | This is the `setState` for chips state                                                                                                                                                                                                                      |
+| inputValue\*                | -                                    | This will be a react `state` for handling the user input before it turns into a chip                                                                                                                                                                        |
+| setInputValue\*             | -                                    | This is the `setState` for input value                                                                                                                                                                                                                      |
+| keysToTriggerChipConversion | `[Enter', ',']`                      | The keys entered in this array will trigger the chip conversion from the input value. (The values allowed in the array are mentioned in the typescript interface -mentioned below, so you will be able to add the keys from that set only)                                                                                  |
+| backspaceToRemoveChip       | false                                | This will remove the chip when user hits backspace even after the `inputvalue` is cleared                                                                                                                                                                                            |
+| validate                    | return value `true`                  | This is the validation function which must return a boolean value either `true` or `false` based on the conditions you want the field value to be valid or convertible into a chip. If the value is valid then n then only a chip will be created out of it |
+| disabled                    | false                                | Enable that to disable the input field                                                                                                                                                                                                                      |
+| placeholder                 | -                                    | A placeholder for input field                                                                                                                                                                                                                               |
+| nextPlaceholder             | -                                    | Placeholder after the first chip is created                                                                                                                                                                                                                 |
+| removeBtnSvg                | is an `SVG` which looks like close/X | You can add any HTML element as of now, but it is better to add an `SVG` element                                                                                                                                                                            |
+| chipStyles                  | -                                    | You add any styles supported by CSS it will be added as inline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
+| containerStyles             | -                                    | You can add the CSS styles for the whole input container itself                                                                                                                    
+
+keysToTriggerChipConversion - Allowed key codes 
+```
+'ShiftRight' | 'ShiftLeft' | 'ControlLeft' | 'ControlRight' | 'AltRight' | 'AltLeft' | 'MetaLeft' | 'MetaRight'
+| 'Tab' | 'Enter' | 'Backspace' | 'Space' | 'Comma' | 'Period' | 'Slash' | 'Semicolon' | 'ArrowLeft' | 'ArrowRight';
+```
+
 
 ## Why Beta
 
@@ -90,7 +98,7 @@ I am excited to get some initial issues and feature requests and will work on th
 
 What do I want to do before the stable release?
 
--   Remove the explicit addition of CSS file path
+-   Remove the explicit addition of the CSS file path
 -   Add 100% test cases for the component
 -   `removeBtnSvg` expects any HTML element, I want to enforce only SVG element
 -   Add a few more features to it
