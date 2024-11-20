@@ -1,14 +1,13 @@
 import React from 'react';
 import './styles.css';
-import {TInputChips} from '../types';
+import {TInputChips, AllowedKeys} from '../types';
 
 const InputChips = ({
     chips,
     setChips,
     inputValue,
     setInputValue,
-    keysToTriggerChipConversion = ['Enter', ','],
-    needWhiteSpace = true,
+    keysToTriggerChipConversion = ['Enter', 'Comma'],
     validate,
     disabled = false,
     placeholder,
@@ -19,10 +18,12 @@ const InputChips = ({
     backspaceToRemoveChip = false,
 }: TInputChips) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (needWhiteSpace) {
-            setInputValue(e.target.value);
+        const value = e.target.value;
+
+        if (keysToTriggerChipConversion.includes('Space')) {
+            setInputValue(value.trim());
         } else {
-            setInputValue(e.target.value.trim());
+            setInputValue(value);
         }
     };
 
@@ -32,30 +33,32 @@ const InputChips = ({
             e.key === 'Backspace' &&
             inputValue.trim() === ''
         ) {
-            setChips((prevState: string[]) => {
+            setChips((prevState) => {
                 const updatedChips = [...prevState];
                 updatedChips.pop();
                 return updatedChips;
             });
         }
 
-        const printableKeys = keysToTriggerChipConversion.filter(
-            (key) => key.length === 1
-        );
-        const namedKeys = keysToTriggerChipConversion.filter(
-            (key) => key.length > 1
-        );
+        const isKeyAllowed = (key: string): key is AllowedKeys => {
+            return (keysToTriggerChipConversion as AllowedKeys[]).includes(
+                key as AllowedKeys
+            );
+        };
+
+        console.log(e.key, e.code, 'lplp');
 
         if (
-            namedKeys.includes(e.key) ||
-            (printableKeys.includes(e.key) &&
-                inputValue.trim() !== '' &&
-                (!validate || validate()))
+            isKeyAllowed(e.code) &&
+            inputValue.trim() !== '' &&
+            (!validate || validate())
         ) {
             let chip = inputValue.trim();
-            if (printableKeys.length > 0) {
+
+            if (keysToTriggerChipConversion.some((key) => key.length === 1)) {
                 const regex = new RegExp(
-                    `[${printableKeys
+                    `[${keysToTriggerChipConversion
+                        .filter((key) => key.length === 1)
                         .map((key) =>
                             key.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
                         )
@@ -86,8 +89,8 @@ const InputChips = ({
     };
 
     return (
-        <div className="chip-input-warpper" style={containerStyles ?? {}}>
-            {chips?.map((chip, index) => (
+        <section className="chip-input-wrapper" style={containerStyles ?? {}}>
+            {chips.map((chip, index) => (
                 <div
                     key={chip + index}
                     data-testid={`input-value-chip-${index}`}
@@ -127,7 +130,7 @@ const InputChips = ({
                 onKeyDown={handleInputKeyDown}
                 disabled={disabled}
             />
-        </div>
+        </section>
     );
 };
 
