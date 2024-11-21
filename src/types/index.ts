@@ -32,4 +32,5 @@ export interface TInputChips {
     chipStyles?: React.CSSProperties;
     containerStyles?: React.CSSProperties;
     backspaceToRemoveChip?: boolean;
+    errorMsg?: string;
 }

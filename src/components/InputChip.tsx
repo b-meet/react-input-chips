@@ -16,6 +16,7 @@ const InputChips = ({
     chipStyles,
     containerStyles,
     backspaceToRemoveChip = false,
+    errorMsg,
 }: TInputChips) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -46,13 +47,7 @@ const InputChips = ({
             );
         };
 
-        console.log(e.key, e.code, 'lplp');
-
-        if (
-            isKeyAllowed(e.code) &&
-            inputValue.trim() !== '' &&
-            (!validate || validate())
-        ) {
+        if (isKeyAllowed(e.code) && (!validate || validate())) {
             let chip = inputValue.trim();
 
             if (keysToTriggerChipConversion.some((key) => key.length === 1)) {
@@ -89,48 +84,64 @@ const InputChips = ({
     };
 
     return (
-        <section className="chip-input-wrapper" style={containerStyles ?? {}}>
-            {chips.map((chip, index) => (
-                <div
-                    key={chip + index}
-                    data-testid={`input-value-chip-${index}`}
-                    className="chip"
-                    style={chipStyles ?? {}}
-                >
-                    {chip}
-                    <button
-                        type="button"
-                        className="closeBtn"
-                        data-testid={`remove-chip-btn-${index}`}
-                        onClick={(e) => removeChip(e, chip + index)}
-                    >
-                        {removeBtnSvg || (
-                            <svg
-                                stroke="currentColor"
-                                fill="currentColor"
-                                strokeWidth="0"
-                                viewBox="0 0 24 24"
-                                height={15}
-                            >
-                                <path fill="none" d="M0 0h24v24H0z"></path>
-                                <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-                            </svg>
-                        )}
-                    </button>
-                </div>
-            ))}
-            <input
-                className="chip-input"
-                type="text"
-                placeholder={
-                    disabled ? '' : chips.length ? nextPlaceholder : placeholder
+        <>
+            <section
+                className={
+                    errorMsg?.length
+                        ? 'chip-input-wrapper chip-input-wrapper-error'
+                        : 'chip-input-wrapper'
                 }
-                value={inputValue}
-                onChange={handleInputChange}
-                onKeyDown={handleInputKeyDown}
-                disabled={disabled}
-            />
-        </section>
+                style={containerStyles ?? {}}
+            >
+                {chips.map((chip, index) => (
+                    <div
+                        key={chip + index}
+                        data-testid={`input-value-chip-${index}`}
+                        className="chip"
+                        style={chipStyles ?? {}}
+                    >
+                        {chip}
+                        <button
+                            type="button"
+                            className="closeBtn"
+                            data-testid={`remove-chip-btn-${index}`}
+                            onClick={(e) => removeChip(e, chip + index)}
+                        >
+                            {removeBtnSvg || (
+                                <svg
+                                    stroke="currentColor"
+                                    fill="currentColor"
+                                    strokeWidth="0"
+                                    viewBox="0 0 24 24"
+                                    height={15}
+                                >
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                                </svg>
+                            )}
+                        </button>
+                    </div>
+                ))}
+                <input
+                    className="chip-input"
+                    type="text"
+                    placeholder={
+                        disabled
+                            ? ''
+                            : chips.length
+                            ? nextPlaceholder
+                            : placeholder
+                    }
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onKeyDown={handleInputKeyDown}
+                    disabled={disabled}
+                />
+            </section>
+            {errorMsg?.length && (
+                <p className="error-msg-wrapper">{errorMsg}</p>
+            )}
+        </>
     );
 };
 
