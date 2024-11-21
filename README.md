@@ -34,6 +34,7 @@ The following is the path to it
 import "../node_modules/react-input-chip-beta/dist/index.css";
 ```
 
+Hers is the simple plain example
 ```javascript
 import { useState } from "react";
 import { InputChips } from "react-input-chip-beta";
@@ -57,6 +58,40 @@ export default MyComponent;
 
 ```
 
+### Validation
+
+If you want to add a validation function and the error message then you might try something like the following in the parent component
+
+```javascript
+const MyComponent = () => {
+    const [chips, setChips] = useState<string[]>([]);
+    const [inputValue, setInputValue] = useState('');
+    const [error, setError] = useState<{inputValueError?: string}>({});
+
+    const validation = () => {
+        const tempErr: {inputValueError?: string} = {};
+        if (!inputValue.trim().length) {
+            tempErr.inputValueError = 'atleast add one message';
+        }
+
+        setError(tempErr);
+        return Object.keys(tempErr).length <= 0;
+    };
+
+    return (
+        <InputChips
+            chips={chips}
+            inputValue={inputValue}
+            setChips={setChips}
+            setInputValue={setInputValue}
+            errorMsg={error?.inputValueError}
+            validate={validation}
+        />
+    );
+};
+
+```
+
 ## Props and information
 
 I have for you here all the props supported as of now. (\* these are required props)
@@ -77,6 +112,7 @@ I have for you here all the props supported as of now. (\* these are required pr
 | removeBtnSvg                | is an `SVG` which looks like close/X | You can add any HTML element as of now, but it is better to add an `SVG` element                                                                                                                                                                            |
 | chipStyles                  | -                                    | You add any styles supported by CSS will be added as inline styles for the chip hence, the highest priority is given to your styles                                                                                                                   |
 | containerStyles             | -                                    | You can add the CSS styles for the whole input container itself                                                                                                                    
+| errorMsg                    | -                                     | It's the error message you want to display and expects a string as its value
 
 keysToTriggerChipConversion - Allowed key codes 
 ```
