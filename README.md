@@ -27,7 +27,7 @@ Install react-input-chips with npm
 
 You just need to import the `<InputChips/>` component in the file you want the **react-input-chip** in and pass the required props that's it. All set!
 
-**One important thing** for the default styling of the `<InputChips/>` is that you need to explicitly add CSS file import in the parent or higher or same component.
+**One important thing** for the default styling of the `<InputChips/>` is that you need to explicitly add CSS file import in the parent or higher or the same component.
 The following is the path to it
 
 ```bash
@@ -68,35 +68,34 @@ I have for you here all the props supported as of now. (\* these are required pr
 | setChips\*                  | -                                    | This is the `setState` for chips state                                                                                                                                                                                                                      |
 | inputValue\*                | -                                    | This will be a react `state` for handling the user input before it turns into a chip                                                                                                                                                                        |
 | setInputValue\*             | -                                    | This is the `setState` for input value                                                                                                                                                                                                                      |
-| keysToTriggerChipConversion | `[Enter', ',']`                      | The keys entered in this array will trigger the chip conversion from the input value. (The values allowed in the array are mentioned in the typescript interface -mentioned below, so you will be able to add the keys from that set only)                                                                                  |
-| backspaceToRemoveChip       | false                                | This will remove the chip when user hits backspace even after the `inputvalue` is cleared                                                                                                                                                                                            |
+| keysToTriggerChipConversion | `[Enter', ',']`                      | The keys entered in this array will trigger the chip conversion from the input value. (The values allowed in the array are mentioned below in the typescript interface, so you will be able to add the keys from that set only)                                                                                  |
+| backspaceToRemoveChip       | false                                | This will remove the chip when the user hits backspace after the `inputvalue` is cleared                                                                                                                                                                                            |
 | validate                    | return value `true`                  | This is the validation function which must return a boolean value either `true` or `false` based on the conditions you want the field value to be valid or convertible into a chip. If the value is valid then n then only a chip will be created out of it |
 | disabled                    | false                                | Enable that to disable the input field                                                                                                                                                                                                                      |
 | placeholder                 | -                                    | A placeholder for input field                                                                                                                                                                                                                               |
 | nextPlaceholder             | -                                    | Placeholder after the first chip is created                                                                                                                                                                                                                 |
 | removeBtnSvg                | is an `SVG` which looks like close/X | You can add any HTML element as of now, but it is better to add an `SVG` element                                                                                                                                                                            |
-| chipStyles                  | -                                    | You add any styles supported by CSS it will be added as inline styles for the chip hence highest priority is given to your stylesheet                                                                                                                       |
+| chipStyles                  | -                                    | You add any styles supported by CSS will be added as inline styles for the chip hence, the highest priority is given to your styles                                                                                                                   |
 | containerStyles             | -                                    | You can add the CSS styles for the whole input container itself                                                                                                                    
 
 keysToTriggerChipConversion - Allowed key codes 
 ```
-'ShiftRight' | 'ShiftLeft' | 'ControlLeft' | 'ControlRight' | 'AltRight' | 'AltLeft' | 'MetaLeft' | 'MetaRight'
-| 'Tab' | 'Enter' | 'Backspace' | 'Space' | 'Comma' | 'Period' | 'Slash' | 'Semicolon' | 'ArrowLeft' | 'ArrowRight';
+'ShiftRight' | 'ShiftLeft' | 'ControlLeft' | 'ControlRight' | 'AltRight'
+| 'AltLeft' | 'MetaLeft' | 'MetaRight' | 'Tab' | 'Enter' | 'Backspace'
+| 'Space' | 'Comma' | 'Period' | 'Slash' | 'Semicolon' | 'ArrowLeft'
+| 'ArrowRight';
 ```
 
 
-## Why Beta
+## Additional Info
 
 Hey guys,
 
-It is the first npm package I ever released and it's gonna be so much fun I guess. No worries, The supported props in the current version might not have any issues still, in case you face any please open an issue or discussion, a PR for a fix would be much appreciated.
+It is the first npm package I ever released and it's gonna be so much fun. No worries, The supported props in the current version do not have any issues, in case you face any please open an issue or discussion, a PR for a fix would be much appreciated.
 
-It's beta cause I have not yet included many features and there is a huge opportunity for many devs to contribute here.
-When I release version 1.0.0. It will be officially considered a stable version I believe as there are a lot of new features I am willing to add along the way.
+I am excited to get some initial issues and feature requests and will work on them on priority until version 1.0.0 😅 also after that.
 
-I am excited to get some initial issues and feature requests and will work on them on priority until version 1.0.0 😅 also after that hehe.
-
-What do I want to do before the stable release?
+What are the future visions as of now?
 
 -   Remove the explicit addition of the CSS file path
 -   Add 100% test cases for the component
