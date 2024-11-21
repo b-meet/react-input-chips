@@ -1,7 +1,7 @@
 {
-    "name": "react-input-chip-beta",
+    "name": "react-input-chips",
     "private": false,
-    "version": "0.1.1",
+    "version": "0.2.2",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -9,9 +9,11 @@
     "keywords": [
         "react-input",
         "react-chips",
+        "react-chip",
         "chips-input",
         "input-chips",
         "react-chips-input",
+        "react-chip-input",
         "react-input-chips",
         "react-chip-component",
         "react-multi-input",
