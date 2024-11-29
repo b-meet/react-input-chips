@@ -31,14 +31,14 @@ You just need to import the `<InputChips/>` component in the file you want the *
 The following is the path to it
 
 ```bash
-import "../node_modules/react-input-chip-beta/dist/index.css";
+import "../node_modules/react-input-chips/dist/index.css";
 ```
 
 Hers is the simple plain example
 
 ```javascript
 import { useState } from "react";
-import { InputChips } from "react-input-chip-beta";
+import { InputChips } from "react-input-chips";
 
 const MyComponent = () => {
 	const [chips, setChips] = useState<string[]>([]);
@@ -142,7 +142,7 @@ Any suggestions are welcome.
 
 ## Support
 
-For support, email meetbhalodiya1030@gmail.com or open a discussion/issue
+For support, email at meetbhalodiya1030@gmail.com or open a discussion/issue
 
 ## Authors
 
