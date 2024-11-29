@@ -12,6 +12,7 @@ You have full control over
 -   chip conversion trigger
 
 ## Demo
+[Sandbox example](https://codesandbox.io/p/sandbox/shf8wx)
 
 ![react-chips](https://github.com/user-attachments/assets/ba33d40e-63ea-46fa-8011-d418ea211a0a)
 
