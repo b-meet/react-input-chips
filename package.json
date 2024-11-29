@@ -1,7 +1,7 @@
 {
-    "name": "react-input-chip-beta",
+    "name": "react-input-chips",
     "private": false,
-    "version": "0.3.0",
+    "version": "0.3.2",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",

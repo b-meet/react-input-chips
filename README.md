@@ -1,12 +1,5 @@
 # React-input-chips
 
-**Author's message**:
-We have a stable release version renamed as [`react-chips-input`](https://www.npmjs.com/package/react-input-chips) please move to that package with newer version as new changes will only be there in that package...
-
-Thanks :)
-
-------------
-
 A package with minimum dependencies and maximum customization.
 
 If you want an input field whose value converts to a customizable chip on a click of keys of your choice then this is the best package for you.

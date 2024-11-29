@@ -11,6 +11,9 @@ const App = () => {
         if (!inputValue.trim().length) {
             tempErr.inputValueError = 'atleast add one message';
         }
+        if (chips.length > 10) {
+            tempErr.inputValueError = 'max 10 chips';
+        }
 
         setError(tempErr);
         return Object.keys(tempErr).length <= 0;
