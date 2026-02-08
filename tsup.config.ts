@@ -1,4 +1,4 @@
-import {defineConfig} from 'tsup';
+import { defineConfig } from 'tsup';
 
 export default defineConfig({
     entry: ['src/index.ts'],
@@ -19,4 +19,5 @@ export default defineConfig({
         };
         options.jsx = 'automatic'; // Use automatic runtime (React 17+)
     },
+    injectStyle: true,
 });

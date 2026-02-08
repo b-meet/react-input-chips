@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import {TInputChips, AllowedKeys} from '../types';
+import { TInputChips, AllowedKeys } from '../types';
 
 const InputChips = ({
     chips,
@@ -18,6 +18,8 @@ const InputChips = ({
     backspaceToRemoveChip = false,
     errorMsg,
 }: TInputChips) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
 
@@ -32,13 +34,18 @@ const InputChips = ({
         if (
             backspaceToRemoveChip &&
             e.key === 'Backspace' &&
-            inputValue.trim() === ''
+            inputValue.trim() === '' &&
+            chips.length > 0
         ) {
-            setChips((prevState) => {
-                const updatedChips = [...prevState];
-                updatedChips.pop();
-                return updatedChips;
-            });
+            e.preventDefault();
+            const updatedChips = [...chips];
+            updatedChips.pop();
+            setChips(updatedChips);
+            return;
+        }
+
+        if (e.key === 'ArrowLeft' && inputValue.trim() === '' && chips.length > 0) {
+            // Logic to select last chip could be added here, but for now we are just cleaning up
         }
 
         const isKeyAllowed = (key: string): key is AllowedKeys => {
@@ -51,15 +58,18 @@ const InputChips = ({
             let chip = inputValue.trim();
 
             if (keysToTriggerChipConversion.some((key) => key.length === 1)) {
-                const regex = new RegExp(
-                    `[${keysToTriggerChipConversion
-                        .filter((key) => key.length === 1)
-                        .map((key) =>
-                            key.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
-                        )
-                        .join('')}]`,
-                    'g'
-                );
+                const regex = React.useMemo(() => {
+                    return new RegExp(
+                        `[${keysToTriggerChipConversion
+                            .filter((key) => key.length === 1)
+                            .map((key) =>
+                                key.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+                            )
+                            .join('')}]`,
+                        'g'
+                    );
+                }, [keysToTriggerChipConversion]);
+
                 chip = chip.replace(regex, '');
             }
 
@@ -88,24 +98,26 @@ const InputChips = ({
             <section
                 className={
                     errorMsg?.length
-                        ? 'chip-input-wrapper chip-input-wrapper-error'
-                        : 'chip-input-wrapper'
+                        ? 'ric-chip-input-wrapper ric-chip-input-wrapper-error'
+                        : 'ric-chip-input-wrapper'
                 }
                 style={containerStyles ?? {}}
+                onClick={() => inputRef.current?.focus()}
             >
                 {chips.map((chip, index) => (
                     <div
                         key={chip + index}
                         data-testid={`input-value-chip-${index}`}
-                        className="chip"
+                        className="ric-chip"
                         style={chipStyles ?? {}}
                     >
                         {chip}
                         <button
                             type="button"
-                            className="closeBtn"
+                            className="ric-closeBtn"
                             data-testid={`remove-chip-btn-${index}`}
                             onClick={(e) => removeChip(e, chip + index)}
+                            aria-label={`Remove chip ${chip}`}
                         >
                             {removeBtnSvg || (
                                 <svg
@@ -123,14 +135,15 @@ const InputChips = ({
                     </div>
                 ))}
                 <input
-                    className="chip-input"
+                    ref={inputRef}
+                    className="ric-chip-input"
                     type="text"
                     placeholder={
                         disabled
                             ? ''
                             : chips.length
-                            ? nextPlaceholder
-                            : placeholder
+                                ? nextPlaceholder
+                                : placeholder
                     }
                     value={inputValue}
                     onChange={handleInputChange}
@@ -139,7 +152,7 @@ const InputChips = ({
                 />
             </section>
             {errorMsg?.length && (
-                <p className="error-msg-wrapper">{errorMsg}</p>
+                <p className="ric-error-msg-wrapper">{errorMsg}</p>
             )}
         </>
     );
