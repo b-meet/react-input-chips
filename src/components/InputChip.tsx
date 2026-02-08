@@ -14,11 +14,18 @@ const InputChips = ({
     nextPlaceholder,
     removeBtnSvg,
     chipStyles,
+    chipClassName,
     containerStyles,
+    containerClassName,
+    inputStyle,
+    inputClassName,
+    closeBtnStyle,
+    closeBtnClassName,
     backspaceToRemoveChip = false,
     errorMsg,
 }: TInputChips) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
+    const [isFocused, setIsFocused] = React.useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -96,11 +103,10 @@ const InputChips = ({
     return (
         <>
             <section
-                className={
-                    errorMsg?.length
+                className={`${errorMsg?.length
                         ? 'ric-chip-input-wrapper ric-chip-input-wrapper-error'
                         : 'ric-chip-input-wrapper'
-                }
+                    } ${isFocused ? 'ric-chip-input-wrapper-focus' : ''} ${containerClassName || ''}`}
                 style={containerStyles ?? {}}
                 onClick={() => inputRef.current?.focus()}
             >
@@ -108,13 +114,14 @@ const InputChips = ({
                     <div
                         key={chip + index}
                         data-testid={`input-value-chip-${index}`}
-                        className="ric-chip"
+                        className={`ric-chip ${chipClassName || ''}`}
                         style={chipStyles ?? {}}
                     >
                         {chip}
                         <button
                             type="button"
-                            className="ric-closeBtn"
+                            className={`ric-closeBtn ${closeBtnClassName || ''}`}
+                            style={closeBtnStyle ?? {}}
                             data-testid={`remove-chip-btn-${index}`}
                             onClick={(e) => removeChip(e, chip + index)}
                             aria-label={`Remove chip ${chip}`}
@@ -136,7 +143,8 @@ const InputChips = ({
                 ))}
                 <input
                     ref={inputRef}
-                    className="ric-chip-input"
+                    className={`ric-chip-input ${inputClassName || ''}`}
+                    style={inputStyle ?? {}}
                     type="text"
                     placeholder={
                         disabled
@@ -149,6 +157,8 @@ const InputChips = ({
                     onChange={handleInputChange}
                     onKeyDown={handleInputKeyDown}
                     disabled={disabled}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                 />
             </section>
             {errorMsg?.length && (

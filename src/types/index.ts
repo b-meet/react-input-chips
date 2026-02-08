@@ -33,4 +33,10 @@ export interface TInputChips {
     containerStyles?: React.CSSProperties;
     backspaceToRemoveChip?: boolean;
     errorMsg?: string;
+    chipClassName?: string;
+    inputStyle?: React.CSSProperties;
+    inputClassName?: string;
+    closeBtnStyle?: React.CSSProperties;
+    closeBtnClassName?: string;
+    containerClassName?: string;
 }
