@@ -1,4 +1,4 @@
-.chip-input-wrapper {
+.ric-chip-input-wrapper {
    gap: 4px;
    flex: 2;
    padding: 5px;
@@ -11,7 +11,7 @@
    max-width: 650px;
    min-width: 300px;
 
-   .chip {
+   .ric-chip {
       background: #e5e5e5;
       border-radius: 4px;
       color: #333333;
@@ -23,7 +23,7 @@
       padding: 6px;
    }
 
-   .chip-input {
+   .ric-chip-input {
       border: none;
       outline: none;
       flex: 1;
@@ -31,7 +31,7 @@
       height: 30px;
    }
 
-   .closeBtn {
+   .ric-closeBtn {
       outline: none;
       border: none;
       background: none;
@@ -44,11 +44,11 @@
    }
 }
 
-.chip-input-wrapper-error {
+.ric-chip-input-wrapper-error {
    border: 2px solid red
 }
 
-.error-msg-wrapper {
+.ric-error-msg-wrapper {
    margin: 0;
    font-size: 12px;
    color: red
