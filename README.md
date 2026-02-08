@@ -1,20 +1,21 @@
 # React-input-chips
 
-A package with minimum dependencies and maximum customization.
+A lightweight, dependency-free, and highly customizable React component for handling chip inputs.
 
-If you want an input field whose value converts to a customizable chip on a click of keys of your choice then this is the best package for you.
+![react-input-chips demo](https://github.com/user-attachments/assets/ba33d40e-63ea-46fa-8011-d418ea211a0a)
 
-You have full control over
+## Features 🚀
 
--   validation of the field
--   styling of the chips
--   styling of the wrapper
--   chip conversion trigger
+-   **Zero Config Styling**: CSS is automatically injected. No more manual imports!
+-   **Deep Customization**: Full control over styles and classes for every element (`chip`, `input`, `container`, `closeBtn`).
+-   **Accessibility**: Full keyboard navigation (`ArrowLeft`, `Backspace`) and ARIA labels.
+-   **Validation**: Built-in support for input validation before chip creation.
+-   **TypeScript**: Fully typed for a great developer experience.
+-   **Lightweight**: Minimal dependencies for maximum performance.
 
 ## Demo
-[Sandbox example](https://codesandbox.io/p/sandbox/shf8wx)
 
-![react-chips](https://github.com/user-attachments/assets/ba33d40e-63ea-46fa-8011-d418ea211a0a)
+[Sandbox example](https://codesandbox.io/p/sandbox/shf8wx)
 
 ## Installation
 
@@ -124,22 +125,11 @@ keysToTriggerChipConversion - Allowed key codes
 | 'ArrowRight';
 ```
 
-## Additional Info
+## About
 
-Hey guys,
+This project started as a simple utility and has grown into a robust package with version 1.0.0!
 
-It is the first npm package I ever released and it's gonna be so much fun. No worries, The supported props in the current version do not have any issues, in case you face any please open an issue or discussion, a PR for a fix would be much appreciated.
-
-I am excited to get some initial issues and feature requests and will work on them on priority until version 1.0.0 😅 also after that.
-
-What are the future visions as of now?
-
--   Remove the explicit addition of the CSS file path
--   Add 100% test cases for the component
--   `removeBtnSvg` expects any HTML element, I want to enforce only SVG element
--   Add a few more features to it
-
-Any suggestions are welcome.
+I am actively maintaining this package. If you find any issues or have feature requests, please open an issue or discussion on GitHub. Pull requests are always welcome!
 
 ## Support
 
